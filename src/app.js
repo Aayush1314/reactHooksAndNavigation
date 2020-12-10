@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Route, BrowserRouter } from 'react-router-dom'
 import Accordion from "./components/accordion"
 import Search from "./components/search"
 import Dropdown from "./components/dropdown"
@@ -37,7 +38,19 @@ const App = ()=>{
 
     return(
         <div>
-            <DropDown selected={selected} onSelectChange={setSelected} colors={Colors} ></DropDown>
+            <BrowserRouter>
+                <div>
+                    <Route path="/" exact render={()=> <Accordion items={items} />} />
+                    <Route path="/search" exact component={Search} />
+                    <Route  path="/dropdown" 
+                            exact 
+                            render={()=>  <DropDown colors={Colors} 
+                                                    selected={selected}
+                                                    onSelectChange={setSelected}
+                                            />
+                                    } />
+                </div>
+            </BrowserRouter>
         </div>
     )
 }
