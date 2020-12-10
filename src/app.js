@@ -40,8 +40,12 @@ const App = ()=>{
         <div>
             <BrowserRouter>
                 <div>
-                    <Route path="/" exact render={()=> <Accordion items={items} />} />
+                    {/* React router V5 method for passing the prop to the component */}
+                    <Route path="/" exact> <Accordion items={items} /> </Route> 
+
                     <Route path="/search" exact component={Search} />
+                    
+                    {/* React router V4 method for passing the prop to the component */}
                     <Route  path="/dropdown" 
                             exact 
                             render={()=>  <DropDown colors={Colors} 
